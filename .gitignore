@@ -1,0 +1,4 @@
+/target
+/apis/.env
+/db/.env
+/websockets/.env
