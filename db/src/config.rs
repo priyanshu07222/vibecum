@@ -1,18 +1,16 @@
 use std::env;
 
-
-
-pub struct config{
-    db_url: String
+pub struct Config{
+    pub db_url: String
 }
 
-impl config {
-    pub fn new(&self) -> config {
+impl Config {
+    pub fn new() -> Config {
         let url = env::var("DATABASE_URL");
         match url {
             Ok(x) => {
                 let db_url = x;
-                Self {
+                Config {
                     db_url
                 }
             }
