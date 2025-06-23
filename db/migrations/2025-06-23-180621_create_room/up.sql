@@ -1,0 +1,5 @@
+-- Your SQL goes here
+CREATE TABLE room (
+ id  TEXT NOT NULL PRIMARY,
+ codee VARCHAR NOT NULL UNIQUE
+)
