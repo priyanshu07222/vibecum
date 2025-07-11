@@ -51,9 +51,9 @@ diesel::table! {
 diesel::table! {
     users (id) {
         id -> Text,
-        #[max_length = 50]
+        #[max_length = 150]
         user_name -> Varchar,
-        #[max_length = 50]
+        #[max_length = 150]
         password -> Varchar,
         name -> Nullable<Text>,
         create_at -> Nullable<Timestamp>,

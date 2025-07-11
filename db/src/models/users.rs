@@ -1,5 +1,6 @@
-use diesel::{prelude::*};
+use diesel::{prelude::*, result::Error};
 use uuid::Uuid;
+use bcrypt::{DEFAULT_COST, hash, verify};
 
 use crate::connection::Connect;
 
@@ -20,10 +21,15 @@ impl Connect{
         }
         
         let id = Uuid::new_v4();
+        let hased_password = match hash(input_password, DEFAULT_COST) {
+            Ok(x) =>  x,
+            Err(_) => String::from("Some went wrong while hashing password")
+        };
+        
         let u = User{
             id: id.to_string(),
             user_name: input_user_name,
-            password: input_password,
+            password: hased_password,
             name: input_name
         };
         

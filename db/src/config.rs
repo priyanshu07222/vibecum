@@ -1,4 +1,5 @@
 use std::env;
+use dotenvy::dotenv;
 
 pub struct Config{
     pub db_url: String
@@ -6,6 +7,7 @@ pub struct Config{
 
 impl Config {
     pub fn new() -> Config {
+        dotenv().ok();
         let url = env::var("DATABASE_URL");
         match url {
             Ok(x) => {
